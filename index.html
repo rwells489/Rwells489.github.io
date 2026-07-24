@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raina Wells — Cloud Developer</title>
+<meta name="description" content="Raina Wells: AWS cloud developer who builds and ships real infrastructure. Self-hosted AI agent platform, serverless products, 20 years of business ownership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF2F1;
+  --paper-raise:#FFFFFF;
+  --ink:#0F2A43;
+  --ink-soft:#3E5A75;
+  --cyan:#145DA0;
+  --cyan-deep:#0B3D6E;
+  --grid:#D3DDE3;
+  --amber:#E8A33D;
+  --amber-deep:#B87817;
+  --green:#2E8B57;
+  --mono:'IBM Plex Mono', ui-monospace, monospace;
+  --sans:'IBM Plex Sans', system-ui, sans-serif;
+  --slab:'Zilla Slab', Georgia, serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+}
+a{color:var(--cyan)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* ---------- blueprint grid background for hero ---------- */
+.hero{
+  background:var(--cyan-deep);
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+  background-size:96px 96px, 96px 96px, 24px 24px, 24px 24px;
+  color:#EAF2FA;
+  border-bottom:4px solid var(--amber);
+}
+.hero-inner{padding:96px 0 72px}
+.eyebrow{
+  font-family:var(--mono);
+  font-size:.78rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--amber);
+}
+.hero h1{
+  font-family:var(--slab);
+  font-weight:700;
+  font-size:clamp(2.4rem, 6vw, 4.2rem);
+  line-height:1.05;
+  margin:14px 0 20px;
+  max-width:17ch;
+}
+.hero .sub{
+  max-width:56ch;
+  font-size:1.08rem;
+  color:#C6D8EA;
+}
+.hero .contact-row{
+  display:flex;flex-wrap:wrap;gap:10px 22px;
+  margin-top:30px;
+  font-family:var(--mono);font-size:.86rem;
+}
+.hero .contact-row a{color:#EAF2FA;text-decoration-color:var(--amber)}
+.stamp{
+  display:inline-block;
+  margin-top:34px;
+  border:1.5px solid var(--amber);
+  color:var(--amber);
+  font-family:var(--mono);
+  font-size:.74rem;
+  letter-spacing:.1em;
+  padding:7px 13px;
+  transform:rotate(-1.2deg);
+}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(238,242,241,.94);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--grid);
+}
+nav .wrap{display:flex;align-items:center;gap:6px;overflow-x:auto;padding-top:0;padding-bottom:0}
+nav .brand{
+  font-family:var(--slab);font-weight:700;font-size:1.02rem;
+  padding:14px 14px 14px 0;white-space:nowrap;
+}
+nav a.navlink{
+  font-family:var(--mono);font-size:.8rem;text-decoration:none;color:var(--ink-soft);
+  padding:16px 12px;white-space:nowrap;border-bottom:3px solid transparent;
+}
+nav a.navlink:hover{color:var(--cyan);border-bottom-color:var(--grid)}
+
+/* ---------- section chrome ---------- */
+section{padding:72px 0}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+.sec-head h2{font-family:var(--slab);font-weight:700;font-size:1.9rem}
+.sec-head .tag{font-family:var(--mono);font-size:.76rem;color:var(--ink-soft);letter-spacing:.1em;text-transform:uppercase}
+.rule{flex:1;height:1px;background:var(--grid)}
+
+/* ---------- bio ---------- */
+.bio-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:44px}
+.bio-grid p{margin-bottom:16px;max-width:62ch}
+.fact-card{
+  background:var(--paper-raise);
+  border:1px solid var(--grid);
+  border-top:4px solid var(--cyan);
+  padding:22px;
+  font-size:.92rem;
+}
+.fact-card h3{font-family:var(--mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px}
+.fact-card ul{list-style:none}
+.fact-card li{padding:7px 0;border-bottom:1px dashed var(--grid);display:flex;justify-content:space-between;gap:12px}
+.fact-card li:last-child{border-bottom:none}
+.fact-card li b{font-weight:600}
+
+/* ---------- platform console (signature) ---------- */
+#platform{background:var(--ink);color:#DCE8F2}
+#platform .sec-head h2{color:#fff}
+#platform .sec-head .tag{color:#8FB0CC}
+#platform .rule{background:#28425C}
+.console{
+  display:grid;grid-template-columns:270px 1fr;gap:0;
+  border:1px solid #2C4A66;
+  background:#0B1F33;
+  min-height:430px;
+}
+.node-list{border-right:1px solid #2C4A66;padding:14px 0;display:flex;flex-direction:column}
+.node-btn{
+  appearance:none;background:none;border:none;cursor:pointer;text-align:left;
+  font-family:var(--mono);font-size:.82rem;color:#9FB9D0;
+  padding:11px 18px;border-left:3px solid transparent;
+  display:flex;align-items:center;gap:10px;
+}
+.node-btn .dot{width:8px;height:8px;border-radius:50%;background:#3E5A75;flex-shrink:0}
+.node-btn:hover{color:#fff;background:#10293F}
+.node-btn[aria-selected="true"]{color:#fff;background:#132F49;border-left-color:var(--amber)}
+.node-btn[aria-selected="true"] .dot{background:var(--amber)}
+.node-detail{padding:26px 30px;font-size:.94rem}
+.node-detail .path{font-family:var(--mono);font-size:.76rem;color:var(--amber);letter-spacing:.06em;margin-bottom:10px}
+.node-detail h3{font-family:var(--slab);font-size:1.5rem;color:#fff;margin-bottom:12px}
+.node-detail p{margin-bottom:14px;max-width:64ch;color:#C2D4E4}
+.node-detail .specs{
+  font-family:var(--mono);font-size:.8rem;
+  border-top:1px dashed #2C4A66;padding-top:14px;
+  display:grid;grid-template-columns:auto 1fr;gap:6px 18px;color:#9FB9D0;
+}
+.node-detail .specs b{color:#E4EEF6;font-weight:500}
+.console-note{font-family:var(--mono);font-size:.76rem;color:#7E9AB4;margin-top:14px}
+
+/* ---------- labs ---------- */
+.lab{
+  background:var(--paper-raise);
+  border:1px solid var(--grid);
+  margin-bottom:18px;
+}
+.lab-toggle{
+  width:100%;appearance:none;background:none;border:none;cursor:pointer;
+  display:flex;align-items:center;gap:16px;
+  padding:20px 22px;text-align:left;font-family:inherit;color:inherit;
+}
+.lab-toggle:hover{background:#F6FAF9}
+.lab-id{font-family:var(--mono);font-size:.78rem;color:var(--cyan);letter-spacing:.08em;flex-shrink:0}
+.lab-toggle h3{font-family:var(--slab);font-size:1.18rem;font-weight:600;flex:1}
+.lab-status{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 9px;border:1px solid;flex-shrink:0;
+}
+.status-live{color:var(--green);border-color:var(--green)}
+.status-shipped{color:var(--amber-deep);border-color:var(--amber-deep)}
+.status-build{color:var(--cyan);border-color:var(--cyan)}
+.lab-toggle .chev{transition:transform .2s;color:var(--ink-soft);flex-shrink:0}
+.lab-toggle[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.lab-body{
+  display:none;
+  padding:0 22px 24px 22px;
+  border-top:1px dashed var(--grid);
+}
+.lab-body.open{display:block}
+.lab-body .inner{padding-top:18px;display:grid;grid-template-columns:1.6fr 1fr;gap:30px}
+.lab-body p{margin-bottom:12px;max-width:62ch}
+.lab-meta{font-size:.86rem}
+.lab-meta h4{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.chip{
+  font-family:var(--mono);font-size:.74rem;
+  background:var(--paper);border:1px solid var(--grid);
+  padding:4px 9px;
+}
+
+/* ---------- experience timeline ---------- */
+.timeline{border-left:2px solid var(--grid);margin-left:8px;padding-left:32px}
+.t-item{position:relative;padding-bottom:38px}
+.t-item:last-child{padding-bottom:0}
+.t-item::before{
+  content:"";position:absolute;left:-40px;top:6px;
+  width:13px;height:13px;border-radius:50%;
+  background:var(--paper);border:3px solid var(--cyan);
+}
+.t-item.pivot::before{border-color:var(--amber)}
+.t-when{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);letter-spacing:.06em}
+.t-item h3{font-family:var(--slab);font-size:1.25rem;margin:4px 0 8px}
+.t-item p{max-width:64ch;margin-bottom:8px}
+.t-item ul{margin:8px 0 0 18px;max-width:62ch}
+.t-item li{margin-bottom:6px}
+
+/* ---------- skills ---------- */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.skill-card{background:var(--paper-raise);border:1px solid var(--grid);padding:20px}
+.skill-card h3{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
+.skill-card p{font-size:.92rem}
+.certs{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
+.cert{
+  background:var(--ink);color:#EAF2FA;
+  font-family:var(--mono);font-size:.8rem;
+  padding:12px 16px;border-left:4px solid var(--amber);
+}
+.cert small{display:block;color:#8FB0CC;margin-top:3px;font-size:.7rem}
+
+/* ---------- education & contact ---------- */
+.edu-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.edu{background:var(--paper-raise);border:1px solid var(--grid);padding:20px}
+.edu h3{font-family:var(--slab);font-size:1.05rem;margin-bottom:4px}
+.edu span{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft)}
+
+footer{
+  background:var(--cyan-deep);color:#C6D8EA;
+  border-top:4px solid var(--amber);
+  padding:56px 0;
+}
+footer h2{font-family:var(--slab);color:#fff;font-size:1.8rem;margin-bottom:12px}
+footer .contact-row{display:flex;flex-wrap:wrap;gap:12px 26px;font-family:var(--mono);font-size:.88rem;margin-top:20px}
+footer a{color:#EAF2FA;text-decoration-color:var(--amber)}
+footer .fine{margin-top:40px;font-family:var(--mono);font-size:.72rem;color:#7E9AB4}
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .bio-grid,.lab-body .inner{grid-template-columns:1fr}
+  .console{grid-template-columns:1fr}
+  .node-list{flex-direction:row;overflow-x:auto;border-right:none;border-bottom:1px solid #2C4A66;padding:0}
+  .node-btn{border-left:none;border-bottom:3px solid transparent;padding:13px 14px}
+  .node-btn[aria-selected="true"]{border-left:none;border-bottom-color:var(--amber)}
+  .hero-inner{padding:64px 0 52px}
+  section{padding:52px 0}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Raina Wells · Cloud Developer · AWS</span>
+    <h1>I don't just study the cloud. I run one.</h1>
+    <p class="sub">Twenty years of building a business taught me how to ship. Now I ship infrastructure: a self-hosted AI agent platform on AWS, serverless products with paying customers, and the security hardening that keeps it all standing.</p>
+    <div class="contact-row">
+      <a href="mailto:rwells489@gmail.com">rwells489@gmail.com</a>
+      <a href="tel:+19723333851">(972) 333-3851</a>
+      <a href="https://linkedin.com/in/rainawells" target="_blank" rel="noopener">linkedin.com/in/rainawells</a>
+      <a href="https://github.com/rwells489" target="_blank" rel="noopener">github.com/rwells489</a>
+    </div>
+    <span class="stamp">STATUS: OPEN TO CLOUD DEVELOPER ROLES</span>
+  </div>
+</header>
+
+<nav aria-label="Section navigation">
+  <div class="wrap">
+    <span class="brand">R. Wells</span>
+    <a class="navlink" href="#bio">Bio</a>
+    <a class="navlink" href="#platform">Platform</a>
+    <a class="navlink" href="#labs">Labs &amp; Demos</a>
+    <a class="navlink" href="#experience">Experience</a>
+    <a class="navlink" href="#skills">Skills</a>
+    <a class="navlink" href="#education">Education</a>
+    <a class="navlink" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section id="bio">
+  <div class="wrap">
+    <div class="sec-head"><h2>Bio</h2><div class="rule"></div><span class="tag">Who I am</span></div>
+    <div class="bio-grid">
+      <div>
+        <p>I started in IT in 1997 — system administration, user support, infrastructure — and earned a BS in Management Information Systems along the way. Then I spent two decades building and running a successful real estate business: finding clients, negotiating contracts, managing finance and compliance, and staying in business through every market the 2000s could throw at me.</p>
+        <p>In 2024 I came back to technology deliberately. I enrolled in the AWS Cloud Institute's Cloud Application Developer program, earned my AWS Certified Cloud Practitioner, and — because certifications alone don't prove much — built a production-grade platform of my own: a self-hosted AI agent system running on AWS EC2 behind a zero-inbound Tailscale network, with its own dashboard, vector database, orchestration layer, and security model.</p>
+        <p>What I bring that a typical junior cloud developer can't: I've owned a P&amp;L. I know what it costs when systems fail, what documentation is worth, and how to talk to the people paying for the infrastructure. I treat every build like a business, because for twenty years, it was.</p>
+      </div>
+      <aside class="fact-card">
+        <h3>At a glance</h3>
+        <ul>
+          <li><span>Focus</span><b>AWS cloud development</b></li>
+          <li><span>IT experience</span><b>7 years + current</b></li>
+          <li><span>Business ownership</span><b>20+ years</b></li>
+          <li><span>Certified</span><b>AWS Cloud Practitioner</b></li>
+          <li><span>In progress</span><b>Developer Associate, AI Practitioner</b></li>
+          <li><span>Program</span><b>AWS Cloud Institute · May 2026</b></li>
+          <li><span>Ships products</span><b>Yes — on Gumroad</b></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="platform">
+  <div class="wrap">
+    <div class="sec-head"><h2>The Platform</h2><div class="rule"></div><span class="tag">Interactive — click a component</span></div>
+    <div class="console">
+      <div class="node-list" role="tablist" aria-label="Platform components" id="nodeList"></div>
+      <div class="node-detail" id="nodeDetail" role="tabpanel"></div>
+    </div>
+    <p class="console-note">// Every component above is real, deployed, and maintained by me on AWS. This map is how the pieces actually connect.</p>
+  </div>
+</section>
+
+<section id="labs">
+  <div class="wrap">
+    <div class="sec-head"><h2>Labs &amp; Demos</h2><div class="rule"></div><span class="tag">Built, shipped, documented</span></div>
+    <div id="labList"></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><h2>Experience</h2><div class="rule"></div><span class="tag">1997 → now</span></div>
+    <div class="timeline">
+      <div class="t-item pivot">
+        <span class="t-when">2024 — PRESENT</span>
+        <h3>Cloud Developer (Independent) &amp; AWS Cloud Institute</h3>
+        <p>Full-time return to technology. Designed, deployed, and operate a self-hosted AI agent platform on AWS; shipped three commercial serverless starter kits; completing the AWS Cloud Application Developer program with hands-on projects in serverless architecture and disaster recovery.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-when">JAN 2020 — MAY 2024</span>
+        <h3>IT Technician — S. Theller Consulting</h3>
+        <ul>
+          <li>Front-line technical support for 100+ users with 95% first-call resolution.</li>
+          <li>Installed, configured, and maintained operating systems and applications.</li>
+          <li>Authored documentation that cut repeat requests by 20%.</li>
+          <li>Improved security posture with firewalls, antivirus, and patching — malware incidents down 30%.</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <span class="t-when">2003 — PRESENT</span>
+        <h3>Real Estate Agent / Small Business Owner — Self-Employed</h3>
+        <ul>
+          <li>Founded and led a thriving real estate business for 20+ years with consistent revenue.</li>
+          <li>Leveraged digital marketing, CRM tools, and data analysis to grow the client base and close contracts.</li>
+          <li>Owned every function: client service, negotiation, finance, and compliance.</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <span class="t-when">1997 — 2003</span>
+        <h3>IT Support &amp; System Administration — Various Roles</h3>
+        <p>Technical support and system administration across multiple organizations. Built foundations in IT infrastructure, data security, and user support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><h2>Skills</h2><div class="rule"></div><span class="tag">Tools I actually use</span></div>
+    <div class="skills-grid">
+      <div class="skill-card"><h3>Cloud &amp; Microservices</h3><p>EC2, S3, Lambda, DynamoDB, RDS, IAM, AWS Connect, AI/ML fundamentals. Daily driver: a live EC2 production environment I administer end-to-end.</p></div>
+      <div class="skill-card"><h3>Infrastructure as Code</h3><p>AWS CloudFormation and Terraform for repeatable, reviewable infrastructure.</p></div>
+      <div class="skill-card"><h3>CI/CD &amp; Version Control</h3><p>Automated deployment pipelines and continuous integration workflows. Git and GitHub for every project, including custom pre-commit hooks and deploy scripts.</p></div>
+      <div class="skill-card"><h3>Containers</h3><p>Docker in production (including the fun parts, like Docker quietly bypassing UFW), plus Kubernetes fundamentals.</p></div>
+      <div class="skill-card"><h3>Security</h3><p>IAM scoping over long-lived keys, zero-inbound networking with Tailscale, outbound traffic threat modeling, prompt-injection risk analysis for AI browsing agents, patching and hardening.</p></div>
+      <div class="skill-card"><h3>Monitoring &amp; Observability</h3><p>CloudWatch, CloudTrail, and AWS X-Ray for visibility into what the platform is actually doing.</p></div>
+      <div class="skill-card"><h3>Programming</h3><p>Python for automation, serverless functions, and agent tooling. TypeScript/Next.js for the Mission Control dashboard.</p></div>
+      <div class="skill-card"><h3>Professional</h3><p>Client engagement, negotiation, small business operations, documentation, and communication — 20 years of practice, not a bullet point.</p></div>
+    </div>
+    <div class="certs">
+      <div class="cert">AWS Certified Cloud Practitioner<small>EARNED</small></div>
+      <div class="cert">AWS Certified Developer — Associate<small>IN PROGRESS · AWS CLOUD INSTITUTE</small></div>
+      <div class="cert">AWS Certified AI Practitioner<small>IN PROGRESS · AWS CLOUD INSTITUTE</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head"><h2>Education</h2><div class="rule"></div><span class="tag">Formal foundations</span></div>
+    <div class="edu-list">
+      <div class="edu"><h3>AWS Cloud Institute</h3><span>Cloud Application Developer Program · Expected May 2026</span></div>
+      <div class="edu"><h3>Strayer University</h3><span>MS, Information Systems · Coursework completed</span></div>
+      <div class="edu"><h3>University of Southern Mississippi</h3><span>BS, Management Information Systems</span></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Let's talk infrastructure.</h2>
+    <p>I'm looking for a cloud developer role where shipping matters. If your team runs on AWS and values people who can own a system end to end, I'd like to hear from you.</p>
+    <div class="contact-row">
+      <a href="mailto:rwells489@gmail.com">rwells489@gmail.com</a>
+      <a href="tel:+19723333851">(972) 333-3851</a>
+      <a href="https://linkedin.com/in/rainawells" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/rwells489" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <p class="fine">// Designed and maintained by Raina Wells. Yes, this page is also a demo.</p>
+  </div>
+</footer>
+
+<script>
+/* ---------------- Platform console data ---------------- */
+const NODES = [
+  {
+    id:"mission-control",
+    label:"mission-control",
+    title:"Mission Control Dashboard",
+    path:"/platform/mission-control",
+    desc:"A Next.js operations dashboard (port 3001) with live API routes pulling real data from every platform component. Discovers agent projects automatically by scanning the agent home directory for marker files, and includes a security audit panel with live run buttons.",
+    specs:{ "Stack":"Next.js, TypeScript", "Role":"Single pane of glass", "Feature":"Live security audit runs", "Discovery":"Filesystem marker scanning" }
+  },
+  {
+    id:"agent-runtime",
+    label:"agent-runtime",
+    title:"Agent Runtime & LLM Proxy",
+    path:"/platform/agent-runtime",
+    desc:"Claude Code as the agent execution runtime, fronted by a self-hosted LLM proxy layer. Agents draw from a library of 50+ role personas and 147 domain skill packs, so the right specialist handles the right task.",
+    specs:{ "Runtime":"Claude Code", "Proxy":"Self-hosted LLM gateway", "Personas":"50+ agent roles", "Skills":"147 domain packs" }
+  },
+  {
+    id:"orchestrator",
+    label:"swarm-orchestrator",
+    title:"Swarm Orchestration",
+    path:"/platform/orchestrator",
+    desc:"Ruflo coordinates multi-agent workflows, letting agents work in parallel on decomposed tasks instead of one long serial conversation.",
+    specs:{ "Engine":"Ruflo", "Pattern":"Multi-agent swarm", "Benefit":"Parallel task execution" }
+  },
+  {
+    id:"router",
+    label:"integrity-router",
+    title:"Integrity Router",
+    path:"/platform/router",
+    desc:"A routing layer enforcing Strict Write Discipline: every file write is verified with SHA-256 filesystem checks, so agents can't silently corrupt state or step on each other's work.",
+    specs:{ "Verification":"SHA-256 hashing", "Policy":"Strict Write Discipline", "Purpose":"Agent write safety" }
+  },
+  {
+    id:"data",
+    label:"data-layer",
+    title:"Postgres + Vector Data Layer",
+    path:"/platform/data",
+    desc:"Supabase with Postgres and pgvector for structured data and semantic search. Originally self-hosted on the instance, then migrated to Supabase cloud — a real migration with real pooler-port conflicts to debug along the way.",
+    specs:{ "Database":"Postgres + pgvector", "Platform":"Supabase (self-hosted → cloud)", "War story":"Pooler port conflicts, resolved" }
+  },
+  {
+    id:"embeddings",
+    label:"local-embeddings",
+    title:"Local Embeddings",
+    path:"/platform/embeddings",
+    desc:"Ollama running nomic-embed-text generates embeddings locally on the instance — no per-call API cost, no data leaving the box — feeding vector search in pgvector.",
+    specs:{ "Engine":"Ollama", "Model":"nomic-embed-text", "Why local":"Cost + data control" }
+  },
+  {
+    id:"browser",
+    label:"headless-browser",
+    title:"Headless Browsing",
+    path:"/platform/browser",
+    desc:"Lightpanda, a Zig-built lightweight headless browser, gives agents web access. Because agent browsing is a prompt-injection surface, it's part of the platform's active threat model — not an afterthought.",
+    specs:{ "Browser":"Lightpanda (Zig)", "Use":"Agent web access", "Risk managed":"Prompt injection via web content" }
+  },
+  {
+    id:"network",
+    label:"network-security",
+    title:"Network & Security Perimeter",
+    path:"/platform/security",
+    desc:"Everything runs on an EC2 m7i-flex.large with zero inbound ports open. All access flows through Tailscale's mesh VPN. Hardening work includes IAM scoping over long-lived keys, outbound traffic threat modeling, and fixing the classic Docker-bypasses-UFW firewall trap.",
+    specs:{ "Compute":"EC2 m7i-flex.large", "Access":"Tailscale, zero-inbound", "IAM":"Scoped roles > static keys", "Threat model":"Outbound + injection surfaces" }
+  }
+];
+
+const nodeList = document.getElementById('nodeList');
+const nodeDetail = document.getElementById('nodeDetail');
+
+NODES.forEach((n,i)=>{
+  const b=document.createElement('button');
+  b.className='node-btn';
+  b.setAttribute('role','tab');
+  b.setAttribute('aria-selected', i===0 ? 'true':'false');
+  b.id='tab-'+n.id;
+  b.innerHTML='<span class="dot"></span>'+n.label;
+  b.addEventListener('click',()=>selectNode(n.id));
+  nodeList.appendChild(b);
+});
+
+function selectNode(id){
+  const n=NODES.find(x=>x.id===id);
+  document.querySelectorAll('.node-btn').forEach(b=>b.setAttribute('aria-selected', b.id==='tab-'+id ? 'true':'false'));
+  let specRows='';
+  for(const k in n.specs){ specRows+='<span>'+k+'</span><b>'+n.specs[k]+'</b>'; }
+  nodeDetail.innerHTML =
+    '<div class="path">'+n.path+'</div>'+
+    '<h3>'+n.title+'</h3>'+
+    '<p>'+n.desc+'</p>'+
+    '<div class="specs">'+specRows+'</div>';
+}
+selectNode(NODES[0].id);
+
+/* ---------------- Labs data ---------------- */
+const LABS = [
+  {
+    id:"LAB-01",
+    title:"Secure RAG Brain — Zero-Trust Vector Search",
+    status:"live", statusLabel:"Live in production",
+    body:"Enterprise-grade zero-trust RAG backend with serverless PII triage gates, strict multi-tenancy via PostgreSQL Row-Level Security, and HNSW vector indexing via pgvector. Replaces costly managed compliance services (AWS Macie, Azure Purview) with a hybrid edge-cloud triage layer running open-source detection (Presidio/regex) on Lambda — keeping raw data out of vector stores until validated. 28 tests passing, CI/CD via GitHub Actions, deployed with SAM.",
+    outcome:"Sub-millisecond semantic search on high-dimensional vectors with guaranteed tenant isolation and PII quarantine before LLM context injection.",
+    chips:["AWS Lambda","EventBridge","Supabase","pgvector","HNSW","Python","SAM","GitHub Actions"],
+    link:{href:"https://github.com/rwells489/secure-rag-brain",text:"View on GitHub →"}
+  },
+  {
+    id:"LAB-02",
+    title:"LangGraph on AWS Lambda — Starter Kits",
+    status:"shipped", statusLabel:"Shipped · For sale",
+    body:"Three tiered commercial starter kits for running LangGraph AI agents on AWS Lambda, published to Gumroad. Tier 1: Calculator agent (beginner). Tier 2: Chat agent with memory + tools (intermediate). Tier 3: Multi-agent supervisor system with S3 artifacts and HITL (advanced). Each tier builds on the previous. Custom release pipeline: project init script, pre-commit hooks, SAM deploy scripts. 13 tests passing.",
+    outcome:"Real products, real customers, real serverless architecture — and a repeatable pipeline for shipping more.",
+    chips:["AWS Lambda","LangGraph","Serverless","Python","CI/CD","Gumroad","SAM","DynamoDB","S3"],
+    link:{href:"https://github.com/rwells489/langgraph-lambda-starter-kits",text:"View on GitHub →"}
+  },
+  {
+    id:"LAB-03",
+    title:"Self-Hosted AI Agent Platform on AWS",
+    status:"live", statusLabel:"Live in production",
+    body:"A complete multi-agent AI platform I designed, deployed, and operate on AWS EC2 (t4g.large, 8 GB ARM). Nine components working together:\n\n1. **free-claude-code** — Anthropic API proxy routing inference to free tiers (NIM, OpenRouter, DeepSeek) and Ollama\n2. **Ruflo** — Swarm orchestration, session memory, MCP server, continuous learning hooks\n3. **agency-agents** — 50+ role personas (dev, QA, PM, marketer, etc.)\n4. **scientific-agent-skills** — 147 domain methodology skills (data analysis, statistics, research, finance, visualization)\n5. **Mythos Router** — SWD filesystem verification (SHA-256 before/after), drift detection, auto-generated repo skills, MEMORY.md audit trails\n6. **Lightpanda** — Zig-built headless browser for agents (JS execution, CDP, markdown dumps, 9x less RAM than Chrome)\n7. **Ollama** — Embedding engine (nomic-embed-text, 768-dim) for pgvector semantic memory\n8. **Supabase (self-hosted)** — Postgres + pgvector = sovereign long-term memory; connected via Postgres MCP server\n9. **Mission Control** — Next.js dashboard (port 3001) with service health, RAM/disk/swap bars, token cost tracking, project discovery, semantic memory search, activity feed, security audit panel, natural-language command bar\n\nArchitecture: Three memory tiers — session (Ruflo), repo (Mythos MEMORY.md), long-term (Supabase pgvector). Two skill layers — roles (agency-agents) + methodologies (scientific-agent-skills). Cost: ~$12/mo on Hetzner CAX21, $0 on Oracle Always Free ARM, ~$0 on AWS credits. Zero inbound ports — all access via Tailscale mesh. Runs as dedicated non-sudo 'agent' user; Docker daemon + Supabase under sudo user. Operational hardening: 2 GB swap, health-check script, disk monitoring, billing alarms, fail2ban, UFW + Docker loopback binding, unattended upgrades.",
+    outcome:"Runs daily as my development environment and the backbone for every other lab on this page. Agents with role identities, domain expertise, persistent semantic memory, web access, and a command center I control via natural language.",
+    chips:["EC2","Tailscale","Docker","Supabase","pgvector","Ollama","Python","Next.js","Ruflo","Lightpanda","Mythos","Agency Agents","Scientific Skills"],
+    link:{href:"",text:""}
+  },
+  {
+    id:"LAB-04",
+    title:"Mission Control — Operations Dashboard",
+    status:"live", statusLabel:"Live in production",
+    body:"A Next.js command center (port 3001) for the self-hosted AI platform: live service health checks (proxy, Lightpanda, Ollama, Postgres, Supabase), real-time resource bars (RAM/disk/swap), token usage & cost tracking by provider/model with free-tier %, semantic memory search via Ollama + pgvector, auto-discovered projects from filesystem markers (CLAUDE.md, .mythos, .ruflo, MEMORY.md), activity feed, and a security audit panel with API key rotation tracking + 8 weekly read-only server checks (connections, cron, SSH keys, users, shell profiles, logins, cred permissions, Docker ports, changed binaries). Command-bar routing (/ for focus): health, cost, memory <query>, drift, resources, projects, backup, security, audit run — anything else forwards to the Claude Code proxy. Runs on 127.0.0.1:3001 behind Tailscale; systemd service + cron token tracker included.",
+    outcome:"Turned a headless server into an observable system I can reason about at a glance — and control via natural language.",
+    chips:["Next.js","TypeScript","API routes","Security tooling","Ollama","pgvector","Tailwind","Systemd"]
+  },
+  {
+    id:"LAB-05",
+    title:"Security Hardening Program",
+    status:"live", statusLabel:"Ongoing",
+    body:"A standing security workstream for the platform: outbound traffic threat modeling, prompt-injection analysis for the agent browsing surface, migrating from long-lived keys to scoped IAM, and closing the Docker/UFW firewall bypass. Findings feed directly into the Mission Control audit panel.",
+    outcome:"A documented threat model and audit tooling — security as a practice, not a checkbox.",
+    chips:["IAM","Threat modeling","Tailscale","UFW","Docker networking"]
+  },
+  {
+    id:"LAB-06",
+    title:"AWS Cloud Institute Projects",
+    status:"build", statusLabel:"In progress",
+    body:"Coursework builds from the Cloud Application Developer program: serverless application architecture and disaster recovery design on AWS, plus prep work for the Developer Associate and AI Practitioner certifications.",
+    outcome:"Structured fundamentals to back the self-directed builds — graduating May 2026.",
+    chips:["Lambda","DynamoDB","S3","Disaster recovery","CloudFormation"]
+  },
+  {
+    id:"LAB-07",
+    title:"Research Lab Pipeline",
+    status:"build", statusLabel:"In progress",
+    body:"A product validation pipeline for turning ideas into launches: backlog → researching → validating → building → testing → report → launched or killed, with a standardized Go/No-Go report template. Agents from the platform do the research legwork.",
+    outcome:"Applies twenty years of business judgment to a repeatable, evidence-based product process.",
+    chips:["Product process","AI agents","Documentation"]
+  }
+];
+
+const labList=document.getElementById('labList');
+LABS.forEach((lab,i)=>{
+  const el=document.createElement('div');
+  el.className='lab';
+  const statusClass = lab.status==='live'?'status-live':lab.status==='shipped'?'status-shipped':'status-build';
+  const linkHtml = lab.link ? '<p><a href="'+lab.link.href+'" target="_blank" rel="noopener">'+lab.link.text+'</a></p>' : '';
+  el.innerHTML=
+    '<button class="lab-toggle" aria-expanded="'+(i===0)+'" aria-controls="body-'+lab.id+'">'+
+      '<span class="lab-id">'+lab.id+'</span>'+
+      '<h3>'+lab.title+'</h3>'+
+      '<span class="lab-status '+statusClass+'">'+lab.statusLabel+'</span>'+
+      '<span class="chev" aria-hidden="true">▸</span>'+
+    '</button>'+
+    '<div class="lab-body'+(i===0?' open':'')+'" id="body-'+lab.id+'">'+
+      '<div class="inner">'+
+        '<div><p>'+lab.body+'</p><p><b>Outcome:</b> '+lab.outcome+'</p>'+linkHtml+'</div>'+
+        '<div class="lab-meta"><h4>Stack</h4><div class="chips">'+lab.chips.map(c=>'<span class="chip">'+c+'</span>').join('')+'</div></div>'+
+      '</div>'+
+    '</div>';
+  labList.appendChild(el);
+});
+
+labList.addEventListener('click',e=>{
+  const btn=e.target.closest('.lab-toggle');
+  if(!btn) return;
+  const body=document.getElementById(btn.getAttribute('aria-controls'));
+  const isOpen=body.classList.contains('open');
+  btn.setAttribute('aria-expanded', String(!isOpen));
+  body.classList.toggle('open');
+});
+</script>
+</body>
+</html>
