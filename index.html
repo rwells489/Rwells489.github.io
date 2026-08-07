@@ -286,9 +286,9 @@ footer .fine{margin-top:40px;font-family:var(--mono);font-size:.72rem;color:#7E9
     <span class="brand">R. Wells</span>
     <a class="navlink" href="#bio">Bio</a>
     <a class="navlink" href="#platform">Platform</a>
-    <a class="navlink" href="#skills">Skills</a>
     <a class="navlink" href="#labs">Labs & Demos</a>
     <a class="navlink" href="#experience">Experience</a>
+    <a class="navlink" href="#skills">Skills</a>
     <a class="navlink" href="#education">Education</a>
     <a class="navlink" href="#contact">Contact</a>
   </div>
@@ -527,7 +527,10 @@ const LABS = [
     body:"Enterprise-grade zero-trust RAG backend with serverless PII triage gates, strict multi-tenancy via PostgreSQL Row-Level Security, and HNSW vector indexing via pgvector. Replaces costly managed compliance services (AWS Macie, Azure Purview) with a hybrid edge-cloud triage layer running open-source detection (Presidio/regex) on Lambda — keeping raw data out of vector stores until validated. 28 tests passing, CI/CD via GitHub Actions, deployed with SAM.",
     outcome:"Sub-millisecond semantic search on high-dimensional vectors with guaranteed tenant isolation and PII quarantine before LLM context injection.",
     chips:["AWS Lambda","EventBridge","Supabase","pgvector","HNSW","Python","SAM","GitHub Actions"],
-    link:{href:"https://github.com/rwells489/secure-rag-brain",text:"View on GitHub →"}
+    links:[
+      {href:"https://secure-rag-brain-nh8oh9vzy2cuuy64eivq5e.streamlit.app",text:"Live Demo →"},
+      {href:"https://github.com/rwells489/secure-rag-brain",text:"View on GitHub →"}
+    ]
   },
   {
     id:"LAB-02",
@@ -587,7 +590,8 @@ LABS.forEach((lab,i)=>{
   const el=document.createElement('div');
   el.className='lab';
   const statusClass = lab.status==='live'?'status-live':lab.status==='shipped'?'status-shipped':'status-build';
-  const linkHtml = lab.link ? '<p><a href="'+lab.link.href+'" target="_blank" rel="noopener">'+lab.link.text+'</a></p>' : '';
+  const linksArray = lab.links || (lab.link ? [lab.link] : []);
+  const linksHtml = linksArray.length ? '<p>' + linksArray.map(l => '<a href="'+l.href+'" target="_blank" rel="noopener">'+l.text+'</a>').join(' ') + '</p>' : '';
   el.innerHTML=
     '<button class="lab-toggle" aria-expanded="'+(i===0)+'" aria-controls="body-'+lab.id+'">'+
       '<span class="lab-id">'+lab.id+'</span>'+
@@ -597,7 +601,7 @@ LABS.forEach((lab,i)=>{
     '</button>'+
     '<div class="lab-body'+(i===0?' open':'')+'" id="body-'+lab.id+'">'+
       '<div class="inner">'+
-        '<div><p>'+lab.body+'</p><p><b>Outcome:</b> '+lab.outcome+'</p>'+linkHtml+'</div>'+
+        '<div><p>'+lab.body+'</p><p><b>Outcome:</b> '+lab.outcome+'</p>'+linksHtml+'</div>'+
         '<div class="lab-meta"><h4>Stack</h4><div class="chips">'+lab.chips.map(c=>'<span class="chip">'+c+'</span>').join('')+'</div></div>'+
       '</div>'+
     '</div>';
