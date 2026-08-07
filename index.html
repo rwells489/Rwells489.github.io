@@ -92,6 +92,71 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offs
   transform:rotate(-1.2deg);
 }
 
+/* ---------- project action buttons (Rachelle style) ---------- */
+.project-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:16px;
+}
+.project-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--sans);
+  font-size:.9rem;
+  font-weight:500;
+  padding:10px 20px;
+  border-radius:6px;
+  text-decoration:none;
+  transition:all .15s ease;
+  border:2px solid transparent;
+  cursor:pointer;
+}
+.project-btn.primary{
+  background:var(--cyan);
+  color:#fff;
+  border-color:var(--cyan);
+}
+.project-btn.primary:hover{
+  background:var(--cyan-deep);
+  border-color:var(--cyan-deep);
+  color:#fff;
+  transform:translateY(-1px);
+}
+.project-btn.secondary{
+  background:transparent;
+  color:var(--cyan);
+  border-color:var(--cyan);
+}
+.project-btn.secondary:hover{
+  background:var(--cyan);
+  color:#fff;
+  transform:translateY(-1px);
+}
+.project-btn:focus-visible{
+  outline:3px solid var(--amber);
+  outline-offset:2px;
+}
+
+/* Dark mode adjustments for platform section */
+#platform .project-btn.primary{
+  background:var(--amber);
+  color:#0B1F33;
+  border-color:var(--amber);
+}
+#platform .project-btn.primary:hover{
+  background:#fff;
+}
+#platform .project-btn.secondary{
+  color:var(--amber);
+  border-color:var(--amber);
+}
+#platform .project-btn.secondary:hover{
+  background:var(--amber);
+  color:#0B1F33;
+}
+
 /* ---------- nav ---------- */
 nav{
   position:sticky;top:0;z-index:50;
@@ -591,7 +656,7 @@ LABS.forEach((lab,i)=>{
   el.className='lab';
   const statusClass = lab.status==='live'?'status-live':lab.status==='shipped'?'status-shipped':'status-build';
   const linksArray = lab.links || (lab.link ? [lab.link] : []);
-  const linksHtml = linksArray.length ? '<p>' + linksArray.map(l => '<a href="'+l.href+'" target="_blank" rel="noopener">'+l.text+'</a>').join(' ') + '</p>' : '';
+  const linksHtml = linksArray.length ? '<div class="project-links">' + linksArray.map((l, idx) => '<a class="project-btn ' + (idx===0?'primary':'secondary') + '" href="'+l.href+'" target="_blank" rel="noopener">'+l.text+'</a>').join('') + '</div>' : '';
   el.innerHTML=
     '<button class="lab-toggle" aria-expanded="'+(i===0)+'" aria-controls="body-'+lab.id+'">'+
       '<span class="lab-id">'+lab.id+'</span>'+
